@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------------------------
+   Design tokens — restrained, posh. One accent (indigo), neutral grays,
+   subtle borders over heavy shadows. Tabular figures for all numbers.
+---------------------------------------------------------------------------- */
+:root {
+  color-scheme: light only;
+  --background: #fbfbfa;
+  --surface: #ffffff;
+  --surface-muted: #f6f6f5;
+  --foreground: #1c1c1e;
+  --muted: #6b6b70;
+  --subtle: #9a9aa0;
+  --border: #ececec;
+  --border-strong: #e0e0e0;
+
+  --accent: #4f46e5;
+  --accent-fg: #ffffff;
+  --accent-muted: #eef0fe;
+  --accent-ring: rgba(79, 70, 229, 0.35);
+
+  --pos: #15803d;
+  --pos-bg: #eaf6ee;
+  --neg: #b42318;
+  --neg-bg: #fdecea;
+  --warn: #b45309;
+  --warn-bg: #fdf2e3;
+
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-muted: var(--accent-muted);
+  --color-pos: var(--pos);
+  --color-pos-bg: var(--pos-bg);
+  --color-neg: var(--neg);
+  --color-neg-bg: var(--neg-bg);
+  --color-warn: var(--warn);
+  --color-warn-bg: var(--warn-bg);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "cv01", "cv03", "ss01";
+}
+
+/* All numeric data uses tabular, lining figures so columns align. */
+.tabular {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+/* Thin, refined scrollbars */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #dcdcdc;
+  border-radius: 999px;
+  border: 3px solid var(--background);
+}
+::-webkit-scrollbar-thumb:hover { background: #cacaca; }
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 0.25s ease both; }
+
+/* Focus ring used by inline-editable cells */
+.edit-focus:focus-within {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--accent-ring);
+  border-radius: var(--radius-sm);
+}
+
+/* Print: drop the app chrome, show only the tender document. */
+@media print {
+  aside,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .print-doc {
+    box-shadow: none !important;
+  }
+  @page {
+    margin: 14mm;
+  }
+}
