@@ -78,16 +78,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </nav>
 
         <div className="border-t border-border p-3">
-          <div className="flex items-center gap-2.5 rounded-lg px-2 py-1.5">
-            <span className="flex size-7 items-center justify-center rounded-full bg-surface-muted text-[11px] font-semibold text-muted">
-              AM
-            </span>
-            <div className="leading-tight">
-              <div className="text-[13px] font-medium">Asad Mahmood</div>
-              <div className="text-[11px] text-subtle">Chief Estimator</div>
-            </div>
-          </div>
-          <div className="mt-2 flex items-center justify-center gap-1.5 border-t border-border pt-2.5 text-[10px] tracking-wide">
+          <div className="flex items-center justify-center gap-1.5 text-[10px] tracking-wide">
             <span className="uppercase text-subtle">Crafted by</span>
             <span className="font-medium text-foreground">Tamoor Salman</span>
           </div>
